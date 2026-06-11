@@ -14,6 +14,7 @@ export default function OrderForm() {
   const navigate = useNavigate();
   const { createOrder } = useOrders();
   const [title, setTitle] = useState("");
+  const [date, setDate] = useState(new Date().toISOString().split('T')[0]);
   const [notes, setNotes] = useState("");
   const [persons, setPersons] = useState([emptyPerson()]);
   const [saving, setSaving] = useState(false);
@@ -77,6 +78,7 @@ export default function OrderForm() {
     try {
       const order = await createOrder({
         title,
+        date,
         notes,
         persons: persons.map(({ id, ...p }) => p),
       });
@@ -128,6 +130,18 @@ export default function OrderForm() {
                 value={notes}
                 onChange={(e) => setNotes(e.target.value)}
                 rows={2}
+              />
+            </div>
+
+            <div className="form-group" style={{ marginBottom: 0 }}>
+              <label className="form-label">Date</label>
+              <input
+                className="form-input"
+                placeholder="Date"
+                type="date"
+                value={date}
+                onChange={(e) => setDate(e.target.value)}
+                required
               />
             </div>
           </div>
