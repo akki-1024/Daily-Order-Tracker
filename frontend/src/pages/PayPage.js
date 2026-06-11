@@ -251,7 +251,7 @@ export default function PayPage() {
 
           <br/>
           
-          <img src="/QR.png" style={{
+          <img src="/QR.png" alt="Payment illustration" style={{
             width: '100%',
             height: '300px',
             objectFit: 'contain'
